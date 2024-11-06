@@ -27,7 +27,7 @@ class ThemeApp {
       textTheme: TextTheme(
 headlineSmall: TextStyle(
   fontSize: 25,
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w600,
   color: black
 ),
 labelLarge: TextStyle(

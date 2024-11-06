@@ -3,7 +3,7 @@ import 'package:flutter_application_1/tabs/hadeth/hadeth_tap.dart';
 import 'package:flutter_application_1/tabs/quran/quran.dart';
 import 'package:flutter_application_1/tabs/sebha/sebha.dart';
 import 'package:flutter_application_1/tabs/radio/radio.dart';
-import 'package:flutter_application_1/tabs/settings/provied_setting.dart';
+import 'package:flutter_application_1/provider/provied_setting.dart';
 import 'package:flutter_application_1/tabs/settings/settings.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

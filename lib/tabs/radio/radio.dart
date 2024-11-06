@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/tabs/settings/provied_setting.dart';
+import 'package:flutter_application_1/provider/provied_setting.dart';
 import 'package:flutter_application_1/theme_app.dart';
 import 'package:provider/provider.dart';
 

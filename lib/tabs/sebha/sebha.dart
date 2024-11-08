@@ -27,14 +27,14 @@ class Sebha extends StatelessWidget {
                     Padding(
                       padding:
                           EdgeInsets.only(left: width * 0.25, top: height * 0),
-                      child: Image.asset(setting.theme == ThemeMode.light
+                      child: Image.asset(setting.themeMode == ThemeMode.light
                           ? 'assets/images/head_sebha_logo.png'
                           : 'assets/images/body_sebha_dark.png'),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: height * 0.10),
                       child: Transform.rotate(angle: sebha.angle,
-                        child: Image.asset(setting.theme == ThemeMode.light
+                        child: Image.asset(setting.themeMode == ThemeMode.light
                             ? 'assets/images/body_sebha_logo.png'
                             : 'assets/images/body_sebha_dark.png'),
                       ),

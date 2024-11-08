@@ -58,7 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: ImageIcon(AssetImage('assets/images/icon_sebha.png')),
                   label: AppLocalizations.of(context)!.sebha),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: AppLocalizations.of(context)!.settings),
+                  icon: Icon(Icons.settings),
+                  label: AppLocalizations.of(context)!.settings),
             ]),
       ),
     );

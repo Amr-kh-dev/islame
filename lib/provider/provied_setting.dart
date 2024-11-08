@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProviedSetting with ChangeNotifier {
-  ThemeMode themeMode = ThemeMode.light;
+   ThemeMode themeMode = ThemeMode.light;
   String languegeCode = 'en';
   bool get isDark => themeMode == ThemeMode.dark;
   String get backgroundImage => isDark ? 'dark_bg.png' : 'default_bg.png';

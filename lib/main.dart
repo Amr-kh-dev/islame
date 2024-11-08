@@ -27,7 +27,7 @@ class IslamiApp extends StatelessWidget {
       initialRoute: '/',
       theme: ThemeApp.lightTheme,
       darkTheme: ThemeApp.darkTheme,
-      themeMode: settingProvieder.theme,
+      themeMode: settingProvieder.themeMode,
      localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(settingProvieder.languegeCode),

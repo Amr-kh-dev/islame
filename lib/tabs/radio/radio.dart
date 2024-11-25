@@ -8,28 +8,35 @@ class Redio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProviedSetting settingProvieder=Provider.of<ProviedSetting>(context);
+    ProviedSetting settingProvieder = Provider.of<ProviedSetting>(context);
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-        Image(image: AssetImage('assets/images/radio_image.png')),
-        Text('اذاعة القران الكريم',style: Theme.of(context).textTheme.headlineLarge,),
-        SizedBox(
+      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        const Image(image: AssetImage('assets/images/radio_image.png')),
+        Text(
+          'اذاعة القران الكريم',
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+        const SizedBox(
           height: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            
             Icon(Icons.arrow_left,
-            size: 40,                                                 
-             color: settingProvieder.isDark?ThemeApp.gold:ThemeApp.lightPrimre),
+                size: 40,
+                color: settingProvieder.isDark
+                    ? ThemeApp.gold
+                    : ThemeApp.lightPrimre),
             Icon(Icons.arrow_right_outlined,
-            size: 60, color: settingProvieder.isDark?ThemeApp.gold:ThemeApp.lightPrimre),
-            Icon(Icons.arrow_right_outlined
-            ,
-                size: 40,  color: settingProvieder.isDark?ThemeApp.gold:ThemeApp.lightPrimre),
+                size: 60,
+                color: settingProvieder.isDark
+                    ? ThemeApp.gold
+                    : ThemeApp.lightPrimre),
+            Icon(Icons.arrow_right_outlined,
+                size: 40,
+                color: settingProvieder.isDark
+                    ? ThemeApp.gold
+                    : ThemeApp.lightPrimre),
           ],
         )
       ]),

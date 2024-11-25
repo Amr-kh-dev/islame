@@ -9,10 +9,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-      create: (_) => ProviedSetting(), child: IslamiApp()));
+      create: (_) => ProviedSetting(), child: const IslamiApp()));
 }
 
 class IslamiApp extends StatelessWidget {
+  const IslamiApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     ProviedSetting settingProvieder = Provider.of<ProviedSetting>(context);
@@ -20,15 +22,15 @@ class IslamiApp extends StatelessWidget {
       title: 'Islami App',
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => HomeScreen(),
-        SuraContant.routeName: (context) => SuraContant(),
-        HadethContantScreen.routeName: (context) => HadethContantScreen(),
+        '/': (context) => const HomeScreen(),
+        SuraContant.routeName: (context) => const SuraContant(),
+        HadethContantScreen.routeName: (context) => const HadethContantScreen(),
       },
       initialRoute: '/',
       theme: ThemeApp.lightTheme,
       darkTheme: ThemeApp.darkTheme,
       themeMode: settingProvieder.theme,
-     localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(settingProvieder.languegeCode),
     );

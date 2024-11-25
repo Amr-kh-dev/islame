@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class Hadeth extends StatelessWidget {
   String hadethName;
   List<String> hadethContant;
-  Hadeth({ required this.hadethContant, required this.hadethName});
+  Hadeth({super.key, required this.hadethContant, required this.hadethName});
 
   @override
   Widget build(BuildContext context) {

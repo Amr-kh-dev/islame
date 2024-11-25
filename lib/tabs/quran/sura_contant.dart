@@ -6,6 +6,8 @@ import 'package:flutter_application_1/tabs/quran/quran.dart';
 class SuraContant extends StatefulWidget {
   static const String routeName = 'route';
 
+  const SuraContant({super.key});
+
   @override
   State<SuraContant> createState() => _SuraContantState();
 }
@@ -21,9 +23,8 @@ class _SuraContantState extends State<SuraContant> {
     if (ayet.isEmpty) {
       loedSuraFile();
     }
-    ;
     return Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/default_bg.png'),
                 fit: BoxFit.fill)),
@@ -41,14 +42,14 @@ class _SuraContantState extends State<SuraContant> {
                 borderRadius: BorderRadius.circular(25),
               ),
               child: ayet.isEmpty
-                  ? LoadingIndecator()
+                  ? const LoadingIndecator()
                   : ListView.separated(
                       itemBuilder: (_, index) => Text(
                             ayet[index],
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.labelLarge,
                           ),
-                      separatorBuilder: (_, int) => SizedBox(
+                      separatorBuilder: (_, int) => const SizedBox(
                             height: 5,
                           ),
                       itemCount: ayet.length)),

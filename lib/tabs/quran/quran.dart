@@ -119,15 +119,17 @@ class Quran extends StatelessWidget {
     "الناس"
   ];
 
+  Quran({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
       children: [
-        Image(image: AssetImage('assets/images/qur2an_screen_logo.png')),
+        const Image(image: AssetImage('assets/images/qur2an_screen_logo.png')),
         Expanded(
           child: ListView.separated(
-            padding: EdgeInsets.only(top: 16),
+            padding: const EdgeInsets.only(top: 16),
             itemBuilder: (_, index) => GestureDetector(
               onTap: () => Navigator.of(context).pushNamed(
                   SuraContant.routeName,
@@ -140,7 +142,7 @@ class Quran extends StatelessWidget {
               ),
             ),
             itemCount: suraName.length,
-            separatorBuilder: (_, __) => SizedBox(height: 12),
+            separatorBuilder: (_, __) => const SizedBox(height: 12),
           ),
         )
       ],

@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -17,7 +17,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
-  List<Widget> taps = [Quran(), HadethTap(), Redio(), Sebha(), Settings()];
+  List<Widget> taps = [
+    Quran(),
+    const HadethTap(),
+    const Redio(),
+    Sebha(),
+    const Settings()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -46,19 +52,24 @@ class _HomeScreenState extends State<HomeScreen> {
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/images/icon_quran.png')),
+                  icon: const ImageIcon(
+                      AssetImage('assets/images/icon_quran.png')),
                   label: AppLocalizations.of(context)!.quran),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/images/icon_hadeth.png')),
+                  icon: const ImageIcon(
+                      AssetImage('assets/images/icon_hadeth.png')),
                   label: AppLocalizations.of(context)!.hadeth),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/images/icon_radio.png')),
+                  icon: const ImageIcon(
+                      AssetImage('assets/images/icon_radio.png')),
                   label: AppLocalizations.of(context)!.radeio),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/images/icon_sebha.png')),
+                  icon: const ImageIcon(
+                      AssetImage('assets/images/icon_sebha.png')),
                   label: AppLocalizations.of(context)!.sebha),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: AppLocalizations.of(context)!.settings),
+                  icon: const Icon(Icons.settings),
+                  label: AppLocalizations.of(context)!.settings),
             ]),
       ),
     );

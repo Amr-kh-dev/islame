@@ -5,6 +5,8 @@ import 'package:flutter_application_1/tabs/hadeth/hadeth_contant_screen.dart';
 import 'package:flutter_application_1/tabs/loading_indecator.dart';
 
 class HadethTap extends StatefulWidget {
+  const HadethTap({super.key});
+
   @override
   State<HadethTap> createState() => _HadethTapState();
 }
@@ -16,17 +18,16 @@ class _HadethTapState extends State<HadethTap> {
   Widget build(BuildContext context) {
     if (hadeth.isEmpty) {
       loadHadeh();
-}
-    ;
+    }
     return Scaffold(
         body: Column(
       children: [
-        Image(image: AssetImage('assets/images/hadeth_logo.png')),
+        const Image(image: AssetImage('assets/images/hadeth_logo.png')),
         Expanded(
           child: hadeth.isEmpty
-              ? LoadingIndecator()
+              ? const LoadingIndecator()
               : ListView.separated(
-                  padding: EdgeInsets.only(top: 16),
+                  padding: const EdgeInsets.only(top: 16),
                   itemBuilder: (_, index) => GestureDetector(
                     onTap: () => Navigator.of(context).pushNamed(
                       HadethContantScreen.routeName,
@@ -39,7 +40,7 @@ class _HadethTapState extends State<HadethTap> {
                     ),
                   ),
                   itemCount: hadeth.length,
-                  separatorBuilder: (_, __) => SizedBox(height: 12),
+                  separatorBuilder: (_, __) => const SizedBox(height: 12),
                 ),
         )
       ],

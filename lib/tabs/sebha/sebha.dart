@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 class Sebha extends StatelessWidget {
   ThemeMode mode = ThemeMode.system;
 
+  Sebha({super.key});
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -16,8 +18,8 @@ class Sebha extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => ProviedSebha(),
       child: Consumer2<ProviedSebha, ProviedSetting>(
-        builder: (context, sebha, setting, child) {
-         return Center(
+          builder: (context, sebha, setting, child) {
+        return Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -29,11 +31,12 @@ class Sebha extends StatelessWidget {
                           EdgeInsets.only(left: width * 0.25, top: height * 0),
                       child: Image.asset(setting.theme == ThemeMode.light
                           ? 'assets/images/head_sebha_logo.png'
-                          : 'assets/images/body_sebha_dark.png'),
+                          : 'assets/images/head_sebha_dark.png'),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: height * 0.10),
-                      child: Transform.rotate(angle: sebha.angle,
+                      child: Transform.rotate(
+                        angle: sebha.angle,
                         child: Image.asset(setting.theme == ThemeMode.light
                             ? 'assets/images/body_sebha_logo.png'
                             : 'assets/images/body_sebha_dark.png'),
@@ -42,16 +45,19 @@ class Sebha extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Center(
                   child: Text(
                 'عدد التسبيحات',
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: setting.theme == ThemeMode.light
+                    ? Theme.of(context).textTheme.headlineSmall
+                    : Theme.of(context).textTheme.headlineSmall!.copyWith(
+                        color: const Color.fromARGB(255, 247, 242, 242)),
               )),
               SizedBox(
-                height: height*0.05,
+                height: height * 0.05,
               ),
               Center(
                 child: InkWell(
@@ -61,12 +67,19 @@ class Sebha extends StatelessWidget {
                     height: height * 0.1,
                     width: width * 0.2,
                     decoration: BoxDecoration(
-                        color: isLightMode
+                        color: setting.theme == ThemeMode.light
                             ? ThemeApp.lightPrimre.withOpacity(0.5)
-                            : ThemeApp.darkPrimre.withOpacity(0.5),
+                            : ThemeApp.darkPrimre.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20)),
                     child: Text(sebha.counter.toString(),
-                        style: Theme.of(context).textTheme.headlineMedium),
+                        style: setting.theme == ThemeMode.light
+                            ? Theme.of(context).textTheme.headlineMedium
+                            : Theme.of(context)
+                                .textTheme
+                                .headlineMedium!
+                                .copyWith(
+                                    color: const Color.fromARGB(
+                                        255, 245, 238, 238))),
                   ),
                 ),
               ),
@@ -74,23 +87,28 @@ class Sebha extends StatelessWidget {
                 height: height * 0.05,
               ),
               Center(
-                child: Container(
-                  alignment: Alignment.center,
-                  height: height * 0.05,
-                  width: width * 0.4,
-                  decoration: BoxDecoration(
-                      color: isLightMode
-                          ? ThemeApp.lightPrimre.withOpacity(0.5)
-                          : ThemeApp.darkPrimre.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Text(sebha.typesOfSebha[sebha.index],
-                      style: Theme.of(context).textTheme.headlineMedium),
-                ),
-              )
+                  child: Container(
+                alignment: Alignment.center,
+                height: height * 0.05,
+                width: width * 0.4,
+                decoration: BoxDecoration(
+                    color: setting.theme == ThemeMode.light
+                        ? ThemeApp.lightPrimre.withOpacity(0.5)
+                        : ThemeApp.gold,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(sebha.typesOfSebha[sebha.index],
+                    style: setting.theme == ThemeMode.light
+                        ? Theme.of(context).textTheme.headlineMedium!.copyWith(
+                            color: const Color.fromARGB(255, 245, 238, 238))
+                        : Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(color: ThemeApp.black)),
+              ))
             ],
           ),
-        );}
-      ),
+        );
+      }),
     );
   }
 }

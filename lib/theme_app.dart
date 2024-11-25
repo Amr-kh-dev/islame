@@ -8,56 +8,46 @@ class ThemeApp {
   static const Color gold = Color(0xFFFACC1D);
 
   static ThemeData lightTheme = ThemeData(
-      appBarTheme: AppBarTheme(
-        backgroundColor: Colors.transparent,
-        iconTheme:IconThemeData(
-          color:lightPrimre
-        ),
-        centerTitle: true,
-        titleTextStyle: TextStyle(fontSize: 30,fontWeight:FontWeight.bold,color: Color(0xFF242424))
-      ),
-      scaffoldBackgroundColor: Colors.transparent,
-      primaryColor: lightPrimre,
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        selectedItemColor: black,
-        unselectedItemColor: white,
-        backgroundColor: lightPrimre,
-        
-      ),
-      textTheme: TextTheme(
-headlineSmall: TextStyle(
-  fontSize: 25,
-  fontWeight: FontWeight.w600,
-  color: black
-),
-labelLarge: TextStyle(
-  fontSize: 20,
-  fontWeight: FontWeight.w400
-  ,color: black
-)
-      ));
-      //////////////////////////////////////////////////////////////////////
-      ///////////////////////////////////////////////////////////////////////
-      ///////////////////////////////////////////////////////
-      //////////////////////////////////////////////////////
-      ///
-  static ThemeData darkTheme = ThemeData(
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           iconTheme: IconThemeData(color: lightPrimre),
           centerTitle: true,
           titleTextStyle: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
-              color: white)),
+              color: Color(0xFF242424))),
+      scaffoldBackgroundColor: Colors.transparent,
+      primaryColor: lightPrimre,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        selectedItemColor: black,
+        unselectedItemColor: white,
+        backgroundColor: lightPrimre,
+      ),
+      textTheme: const TextTheme(
+          headlineSmall: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.w600, color: black),
+          labelLarge: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.w400, color: black)));
+  //////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////
+  ///
+  static ThemeData darkTheme = ThemeData(
+      appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          iconTheme: IconThemeData(color: lightPrimre),
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+              fontSize: 30, fontWeight: FontWeight.bold, color: white)),
       scaffoldBackgroundColor: Colors.transparent,
       primaryColor: darkPrimre,
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: gold,
         unselectedItemColor: white,
         backgroundColor: darkPrimre,
       ),
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
           headlineSmall: TextStyle(
               fontSize: 25, fontWeight: FontWeight.w400, color: white),
           labelLarge: TextStyle(

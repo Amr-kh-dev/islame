@@ -6,20 +6,23 @@ import 'package:flutter_application_1/tabs/hadeth/hadeth.dart';
 class HadethContantScreen extends StatelessWidget {
   static const String routeName = '/hadeth_contant';
 
+  const HadethContantScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     Hadeth args = ModalRoute.of(context)!.settings.arguments as Hadeth;
 
-      return Container(
-        decoration: BoxDecoration(
+    return Container(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/default_bg.png'),
                 fit: BoxFit.fill)),
         child: Scaffold(
           appBar: AppBar(
-            title: Text(args.hadethName,
-          ),),
-
+            title: Text(
+              args.hadethName,
+            ),
+          ),
           body: Container(
               padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.sizeOf(context).height * 0.025,
@@ -29,18 +32,16 @@ class HadethContantScreen extends StatelessWidget {
                 color: Colors.white.withOpacity(0.8),
                 borderRadius: BorderRadius.circular(25),
               ),
-              child:  ListView.separated(
-                      itemBuilder: (_, index) => Text(
-                            args.hadethContant[index],
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.labelLarge,
-                          ),
-                      separatorBuilder: (_, int) => SizedBox(
-                            height: 5,
-                          ),
-                      itemCount: args.hadethContant.length)),
-        )
-        )
-        ;
+              child: ListView.separated(
+                  itemBuilder: (_, index) => Text(
+                        args.hadethContant[index],
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
+                  separatorBuilder: (_, int) => const SizedBox(
+                        height: 5,
+                      ),
+                  itemCount: args.hadethContant.length)),
+        ));
   }
 }

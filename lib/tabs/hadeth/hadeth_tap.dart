@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/provider/provied_setting.dart';
 import 'package:flutter_application_1/tabs/hadeth/hadeth.dart';
 import 'package:flutter_application_1/tabs/hadeth/hadeth_contant_screen.dart';
 import 'package:flutter_application_1/tabs/loading_indecator.dart';
+import 'package:flutter_application_1/theme_app.dart';
+import 'package:provider/provider.dart';
 
 class HadethTap extends StatefulWidget {
   const HadethTap({super.key});
@@ -16,6 +19,7 @@ class _HadethTapState extends State<HadethTap> {
 
   @override
   Widget build(BuildContext context) {
+    final setting = Provider.of<ProviedSetting>(context);
     if (hadeth.isEmpty) {
       loadHadeh();
     }
@@ -23,6 +27,21 @@ class _HadethTapState extends State<HadethTap> {
         body: Column(
       children: [
         const Image(image: AssetImage('assets/images/hadeth_logo.png')),
+        Divider(
+          thickness: 2,
+          color: setting.isDark ? ThemeApp.gold : ThemeApp.black,
+        ),
+        Text(
+          'الاحاديث',
+          style: Theme.of(context)
+              .textTheme
+              .headlineMedium!
+              .copyWith(color: setting.isDark ? Colors.white : ThemeApp.black),
+        ),
+        Divider(
+          thickness: 2,
+          color: setting.isDark ? ThemeApp.gold : ThemeApp.black,
+        ),
         Expanded(
           child: hadeth.isEmpty
               ? const LoadingIndecator()
@@ -35,12 +54,21 @@ class _HadethTapState extends State<HadethTap> {
                     ),
                     child: Text(
                       hadeth[index].hadethName,
-                      style: Theme.of(context).textTheme.headlineSmall,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall!
+                          .copyWith(
+                              color: setting.isDark
+                                  ? Colors.white
+                                  : ThemeApp.black),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   itemCount: hadeth.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 12),
+                  separatorBuilder: (_, __) => Divider(
+                    thickness: 2,
+                    color: setting.isDark ? ThemeApp.gold : ThemeApp.black,
+                  ),
                 ),
         )
       ],

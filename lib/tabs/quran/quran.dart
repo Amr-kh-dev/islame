@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/provider/provied_setting.dart';
 import 'package:flutter_application_1/tabs/quran/sura_contant.dart';
+import 'package:flutter_application_1/theme_app.dart';
+import 'package:provider/provider.dart';
 
 class Quran extends StatelessWidget {
-  List<String> suraName = [
-    "الفاتحه",
+  final List<String> suraName = [
+    'اسم السورة',
+    "الفاتحة",
     "البقرة",
     "آل عمران",
     "النساء",
@@ -119,39 +123,200 @@ class Quran extends StatelessWidget {
     "الناس"
   ];
 
+  final List<String> suraAyatCount = [
+    'عدد الايات',
+    '7',
+    '286',
+    '200',
+    '176',
+    '120',
+    '165',
+    '206',
+    '75',
+    '129',
+    '109',
+    '123',
+    '111',
+    '43',
+    '52',
+    '99',
+    '128',
+    '111',
+    '110',
+    '98',
+    '135',
+    '112',
+    '78',
+    '118',
+    '64',
+    '77',
+    '227',
+    '93',
+    '88',
+    '69',
+    '60',
+    '34',
+    '30',
+    '73',
+    '54',
+    '45',
+    '83',
+    '182',
+    '88',
+    '75',
+    '85',
+    '54',
+    '53',
+    '89',
+    '59',
+    '37',
+    '35',
+    '38',
+    '29',
+    '18',
+    '45',
+    '60',
+    '49',
+    '62',
+    '55',
+    '78',
+    '96',
+    '29',
+    '22',
+    '24',
+    '13',
+    '14',
+    '11',
+    '11',
+    '18',
+    '12',
+    '30',
+    '52',
+    '52',
+    '44',
+    '28',
+    '28',
+    '20',
+    '56',
+    '40',
+    '31',
+    '50',
+    '40',
+    '46',
+    '42',
+    '29',
+    '19',
+    '36',
+    '25',
+    '22',
+    '17',
+    '19',
+    '26',
+    '20',
+    '20',
+    '8',
+    '8',
+    '19',
+    '5',
+    '8',
+    '8',
+    '11',
+    '11',
+    '8',
+    '3',
+    '9',
+    '5',
+    '4',
+    '7',
+    '3',
+    '6'
+  ];
+
   Quran({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final setting = Provider.of<ProviedSetting>(context);
     return Scaffold(
-        body: Column(
-      children: [
-        const Image(image: AssetImage('assets/images/qur2an_screen_logo.png')),
-        Expanded(
-          child: ListView.separated(
-            padding: const EdgeInsets.only(top: 16),
-            itemBuilder: (_, index) => GestureDetector(
-              onTap: () => Navigator.of(context).pushNamed(
-                  SuraContant.routeName,
-                  arguments: SuraCountantArges(
-                      index: index, suraName: suraName[index])),
-              child: Text(
-                suraName[index],
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            itemCount: suraName.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Image(
+            image: AssetImage('assets/images/qur2an_screen_logo.png'),
           ),
-        )
-      ],
-    ));
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.all(15),
+              itemCount: suraName.length,
+              separatorBuilder: (context, index) => Divider(
+                thickness: 1,
+                color: setting.isDark ? ThemeApp.gold : ThemeApp.black,
+              ),
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () => Navigator.of(context).pushNamed(
+                    SuraContant.routeName,
+                    arguments: SuraCountantArges(
+                      index: index == 0 ? index++ : index,
+                      suraName: suraName[index == 0 ? index++ : index],
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              suraName[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                      color: setting.isDark
+                                          ? Colors.white
+                                          : ThemeApp.black),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              suraAyatCount[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                      color: setting.isDark
+                                          ? Colors.white
+                                          : ThemeApp.black),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
 class SuraCountantArges {
   String suraName;
   int index;
-  SuraCountantArges({required this.index, required this.suraName});
+
+  SuraCountantArges({
+    required this.index,
+    required this.suraName,
+  });
 }

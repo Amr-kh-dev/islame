@@ -28,7 +28,6 @@ class Settings extends StatelessWidget {
     );
   }
 
-  /// Builds the dark mode toggle row.
   Widget _buildDarkModeToggle(
       BuildContext context, ProviedSetting settingProvider) {
     return Row(
@@ -51,7 +50,6 @@ class Settings extends StatelessWidget {
     );
   }
 
-  /// Builds the language selector row.
   Widget _buildLanguageSelector(BuildContext context,
       ProviedSetting settingProvider, List<Languages> languages) {
     return Row(
@@ -72,7 +70,10 @@ class Settings extends StatelessWidget {
                     value: language,
                     child: Text(
                       language.name,
-                      style: Theme.of(context).textTheme.labelLarge,
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: settingProvider.isDark
+                              ? Colors.white
+                              : ThemeApp.black),
                     ),
                   ),
                 )
@@ -84,7 +85,7 @@ class Settings extends StatelessWidget {
             },
             borderRadius: BorderRadius.circular(25),
             dropdownColor: settingProvider.isDark
-                ? ThemeApp.gold
+                ? const Color.fromARGB(255, 197, 159, 7)
                 : const Color.fromARGB(255, 201, 193, 193),
           ),
         ),

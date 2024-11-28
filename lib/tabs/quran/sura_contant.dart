@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/provider/provied_setting.dart';
 import 'package:flutter_application_1/tabs/loading_indecator.dart';
 import 'package:flutter_application_1/tabs/quran/quran.dart';
+import 'package:flutter_application_1/theme_app.dart';
+import 'package:provider/provider.dart';
 
 class SuraContant extends StatefulWidget {
   static const String routeName = 'route';
@@ -19,40 +22,53 @@ class _SuraContantState extends State<SuraContant> {
 
   @override
   Widget build(BuildContext context) {
+    final setting = Provider.of<ProviedSetting>(context);
     arrgs = ModalRoute.of(context)!.settings.arguments as SuraCountantArges;
     if (ayet.isEmpty) {
       loedSuraFile();
     }
     return Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/default_bg.png'),
+                image: AssetImage(setting.isDark
+                    ? 'assets/images/dark_bg.png'
+                    : 'assets/images/default_bg.png'),
                 fit: BoxFit.fill)),
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(arrgs.suraName),
-          ),
-          body: Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.sizeOf(context).height * 0.025,
-                  vertical: MediaQuery.sizeOf(context).height * 0.05),
-              margin: EdgeInsets.all(MediaQuery.sizeOf(context).height * 0.06),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(25),
+        child: SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              title: Text(
+                arrgs.suraName,
+                style: TextStyle(
+                    color: setting.isDark ? Colors.white : ThemeApp.black),
               ),
-              child: ayet.isEmpty
-                  ? const LoadingIndecator()
-                  : ListView.separated(
-                      itemBuilder: (_, index) => Text(
-                            ayet[index],
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.labelLarge,
-                          ),
-                      separatorBuilder: (_, int) => const SizedBox(
-                            height: 5,
-                          ),
-                      itemCount: ayet.length)),
+            ),
+            body: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.sizeOf(context).height * 0.025,
+                    vertical: MediaQuery.sizeOf(context).height * 0.05),
+                margin:
+                    EdgeInsets.all(MediaQuery.sizeOf(context).height * 0.06),
+                decoration: BoxDecoration(
+                  color: setting.isDark ? ThemeApp.darkPrimre : Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: ayet.isEmpty
+                    ? const LoadingIndecator()
+                    : ListView.separated(
+                        itemBuilder: (_, index) => Text(
+                              ayet[index],
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.labelLarge,
+                            ),
+                        separatorBuilder: (_, int) => Divider(
+                              thickness: 2,
+                              color: setting.isDark
+                                  ? ThemeApp.gold
+                                  : ThemeApp.black,
+                            ),
+                        itemCount: ayet.length)),
+          ),
         ));
   }
 

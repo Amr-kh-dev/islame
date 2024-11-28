@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 
 class Quran extends StatelessWidget {
   final List<String> suraName = [
-    'اسم السورة',
     "الفاتحة",
     "البقرة",
     "آل عمران",
@@ -124,7 +123,6 @@ class Quran extends StatelessWidget {
   ];
 
   final List<String> suraAyatCount = [
-    'عدد الايات',
     '7',
     '286',
     '200',
@@ -244,9 +242,53 @@ class Quran extends StatelessWidget {
           const Image(
             image: AssetImage('assets/images/qur2an_screen_logo.png'),
           ),
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 0),
+            child: Column(
+              children: [
+                Divider(
+                  thickness: 1,
+                  color: setting.isDark ? ThemeApp.gold : ThemeApp.black,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      setting.isEnglish ? 'soura name' : 'اسم الصوره',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge!
+                          .copyWith(
+                              color: setting.isDark
+                                  ? ThemeApp.gold
+                                  : ThemeApp.black,
+                              fontSize: 24),
+                    ),
+                    Text(
+                      setting.isEnglish ? 'AyatCount' : ' عدد الايات',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge!
+                          .copyWith(
+                              color: setting.isDark
+                                  ? ThemeApp.gold
+                                  : ThemeApp.black,
+                              fontSize: 24),
+                    ),
+                  ],
+                ),
+                Divider(
+                  thickness: 1,
+                  color: setting.isDark ? ThemeApp.gold : ThemeApp.black,
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: ListView.separated(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.only(
+                  left: 15, right: 15, top: 0, bottom: 15),
               itemCount: suraName.length,
               separatorBuilder: (context, index) => Divider(
                 thickness: 1,
@@ -257,8 +299,8 @@ class Quran extends StatelessWidget {
                   onTap: () => Navigator.of(context).pushNamed(
                     SuraContant.routeName,
                     arguments: SuraCountantArges(
-                      index: index == 0 ? index++ : index,
-                      suraName: suraName[index == 0 ? index++ : index],
+                      index: index,
+                      suraName: suraName[index],
                     ),
                   ),
                   child: Row(

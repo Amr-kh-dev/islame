@@ -4,6 +4,7 @@ class ProviedSetting with ChangeNotifier {
   ThemeMode theme = ThemeMode.light;
   String languegeCode = 'en';
   bool get isDark => theme == ThemeMode.dark;
+  bool get isEnglish => languegeCode == 'en';
   String get backgroundImage => isDark ? 'dark_bg.png' : 'default_bg.png';
   changeTheme(ThemeMode selcetedTheme) {
     theme = selcetedTheme;

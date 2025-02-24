@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> taps = [
     Quran(),
     const HadethTap(),
-    const Redio(),
+    Redio(),
     Sebha(),
     const Settings()
   ];
